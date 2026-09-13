@@ -1,10 +1,13 @@
-name: Sync public playable build
+name: Build public playable
 
 on:
   workflow_dispatch:
   push:
     branches: [main]
     paths:
+      - 'src/**'
+      - 'package.json'
+      - 'tsconfig.json'
       - '.github/workflows/sync-build.yml'
 
 permissions:
@@ -14,46 +17,32 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout public repository
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Checkout development source
-        uses: actions/checkout@v4
-        with:
-          repository: shute2004/minigame
-          ref: main
-          path: upstream
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
 
-      - name: Build QUICK-DRAW SAMURAI
-        working-directory: upstream/youtube-playables/setsuna-no-migiri
-        run: |
-          npm install --no-audit --no-fund
-          npm run typecheck
-          npm run build
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund --package-lock=false
 
-      - name: Copy deployable files
-        run: |
-          rm -rf dist
-          cp upstream/youtube-playables/setsuna-no-migiri/index.html ./index.html
-          cp upstream/youtube-playables/setsuna-no-migiri/styles.css ./styles.css
-          cp -R upstream/youtube-playables/setsuna-no-migiri/dist ./dist
-          touch .nojekyll
-          rm -rf upstream
+      - name: Type-check
+        run: npm run typecheck
 
-      - name: Commit synchronized build
+      - name: Build deployable JavaScript
+        run: npm run build
+
+      - name: Commit generated build
         run: |
-          if git diff --quiet && git diff --cached --quiet; then
+          git add -f dist
+          if git diff --cached --quiet; then
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -A
-          git commit -m 'Sync deployable build from minigame'
+          git commit -m 'Build deployable JavaScript'
           git push
