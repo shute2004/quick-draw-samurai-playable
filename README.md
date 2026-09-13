@@ -19,9 +19,11 @@ https://shute2004.github.io/quick-draw-samurai-playable/
 - Rewarded retry ads and interstitial ads every two completed runs in the Playables environment
 - Responsive portrait, landscape, and desktop layouts
 
-## Source
+## Source and build
 
-The development source is maintained in `shute2004/minigame` under `youtube-playables/setsuna-no-migiri/`. This repository contains the deployable public build used for hosting and evaluation.
+The canonical development source is maintained in `shute2004/minigame` under `youtube-playables/setsuna-no-migiri/`. This public repository contains a synchronized TypeScript source snapshot together with the generated `dist/` JavaScript used for hosting and evaluation.
+
+Changes to the TypeScript snapshot are type-checked and built by GitHub Actions. The generated `dist/` files are committed so the repository can be served directly by GitHub Pages.
 
 ## License
 
