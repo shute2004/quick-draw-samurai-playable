@@ -21,9 +21,9 @@ https://shute2004.github.io/quick-draw-samurai-playable/
 
 ## Source and build
 
-The canonical development source is maintained in `shute2004/minigame` under `youtube-playables/setsuna-no-migiri/`. This public repository contains a synchronized TypeScript source snapshot together with the generated `dist/` JavaScript used for hosting and evaluation.
+The canonical development source is maintained in `shute2004/minigame` under `youtube-playables/setsuna-no-migiri/`. This public repository contains a synchronized TypeScript source snapshot for hosting and evaluation.
 
-Changes to the TypeScript snapshot are type-checked and built by GitHub Actions. The generated `dist/` files are committed so the repository can be served directly by GitHub Pages.
+GitHub Actions type-checks the TypeScript source, builds `dist/` only inside the workflow, packages `index.html`, `styles.css`, `.nojekyll`, and the generated JavaScript as a GitHub Pages artifact, and deploys that artifact directly to Pages. Generated `dist/` files are not committed to the repository.
 
 ## License
 
