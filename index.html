@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>QUICK-DRAW SAMURAI</title>
+<link rel="stylesheet" href="./styles.css?v=20260913-1315">
+</head>
+<body>
+<div id="stage">
+  <canvas id="cv"></canvas>
+  <div id="hud">
+    <div><div id="hudRound"><span id="hudRoundLabel">DEFEATED</span> <b id="winsVal">0</b> <span id="hudRoundUnit"></span></div><div id="hudHint"></div></div>
+    <div><div id="hudScore"><b id="hudScoreLabel">SCORE</b><span id="scoreVal">0</span></div><div id="hudBest"></div></div>
+  </div>
+  <div id="roundIntro"><div id="riCount"></div><div id="riMain"></div><div id="riHint"></div></div>
+  <div id="stamp"></div>
+  <div id="hintBar" class="hide">Strike at the instant of “!” — SPACE / TAP</div>
+  <div id="title" class="screen show">
+    <div id="tTag"></div>
+    <div id="tName">QUICK-DRAW SAMURAI</div>
+    <div id="tBrush"></div>
+    <div id="tRules">
+      <div id="tRule1">Face your opponent. At a random moment, “!” will flash.</div>
+      <div id="tRule2">Draw the instant it appears — first strike wins.</div>
+      <div id="tRule3">Move too soon or react too late, and the duel is over.</div>
+      <div id="tRule4">Every victory brings a faster opponent.</div>
+    </div>
+    <div id="tBest"></div>
+    <div id="tGo">— SPACE / TAP TO DRAW —</div>
+  </div>
+  <div id="result" class="screen">
+    <div id="rFrame">
+      <div id="rTag">DUEL OVER</div>
+      <div id="rWinsLbl">OPPONENTS DEFEATED</div>
+      <div><span id="rWinsVal">0</span><span id="rWinsUnit"></span></div>
+      <div id="rScoreLine"><span id="rScoreLabel">SCORE</span> <span id="rScoreVal">0</span></div>
+      <div id="rRankWrap"><span id="rRank">DUELIST</span></div>
+      <div id="rRankLine"></div>
+      <div id="rNames"></div>
+      <div id="rBest"></div>
+      <button id="rewardContinue" type="button">WATCH AD TO RETRY THIS OPPONENT</button>
+      <div id="rGo" class="go">DRAW AGAIN: SPACE / TAP</div>
+    </div>
+  </div>
+  <button id="bgmBtn" class="iconBtn" title="BGM (M key)">♪</button>
+  <button id="muteBtn" class="iconBtn" title="Sound effects">SFX</button>
+</div>
+<script src="https://www.youtube.com/game_api/v1"></script>
+<script type="module" src="./dist/main.js?v=20260913-1315"></script>
+</body>
+</html>
